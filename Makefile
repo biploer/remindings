@@ -1,4 +1,5 @@
 BINPATH=bin/remindings
+IMAGE=remindings:local
 
 .PHONY: build
 build: build-app
@@ -10,3 +11,11 @@ build-app:
 .PHONY: run
 run: build
 	$(BINPATH)
+
+.PHONY: dock
+dock: dock-build
+	podman run -it --rm localhost/$(IMAGE)
+
+.PHONY: dock-build
+dock-build:
+	podman build -t $(IMAGE) .
