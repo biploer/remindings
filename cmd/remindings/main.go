@@ -1,7 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"context"
+	"log"
+	"os"
+	"os/signal"
+
+	"github.com/biploer/remindings/internal/app"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	defer cancel()
+
+	if err := app.Run(ctx); err != nil {
+		log.Fatal(err)
+	}
 }
