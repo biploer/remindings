@@ -18,7 +18,7 @@ run: build
 
 .PHONY: dock
 dock: test dock-build
-	podman run -it --rm localhost/$(IMAGE)
+	podman run -p 8080:8080 --rm localhost/$(IMAGE)
 
 .PHONY: dock-build
 dock-build:
