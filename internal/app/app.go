@@ -2,17 +2,20 @@ package app
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/biploer/remindings/internal/handler"
 )
 
 func Run(ctx context.Context) error {
 	router := http.NewServeMux()
-	router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "Hello, fellow!")
-	})
+	// router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
+	// 	fmt.Fprint(w, "Hello, fellow!")
+	// })
+
+	handler.RegisterRoutes(router, handler.Dependences{})
 
 	server := http.Server{
 		Addr:         "0.0.0.0:8080",
