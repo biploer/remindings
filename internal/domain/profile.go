@@ -8,7 +8,7 @@ import (
 )
 
 type Profile struct {
-	Id        uuid.UUID
+	ID        uuid.UUID
 	TGId      int64
 	CreatedAt time.Time
 	FirstName string
@@ -23,7 +23,7 @@ func NewProfile(tgId int64, firstName, lastName, username string) (Profile, erro
 	}
 
 	return Profile{
-		Id:        newId,
+		ID:        newId,
 		TGId:      tgId,
 		CreatedAt: time.Now(),
 	}, nil
