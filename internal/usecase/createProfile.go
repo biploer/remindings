@@ -11,7 +11,7 @@ import (
 func (p *Profile) CreateProfile(ctx context.Context, input dto.CreateProfileInput) (dto.CreateProfileOutput, error) {
 	var output dto.CreateProfileOutput
 
-	// TODO: Проверить в кэше существование профиля
+	// TODO: Check existing of profile in the cashe/db
 
 	profile, err := domain.NewProfile(input.TGId, input.FirstName, input.LastName, input.Username)
 	if err != nil {
